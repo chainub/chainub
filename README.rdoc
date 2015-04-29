@@ -1,3 +1,3 @@
 = Chainub
 
-This project rocks and uses MIT-LICENSE.
+This is like ifttt. but more open and programable.
