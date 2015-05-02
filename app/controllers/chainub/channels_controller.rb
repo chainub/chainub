@@ -3,6 +3,7 @@ require_dependency "chainub/application_controller"
 module Chainub
   class ChannelsController < ApplicationController
     before_action :set_channel, only: [:show, :edit, :update, :destroy]
+    before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
 
     # GET /channels
     def index
@@ -15,26 +16,15 @@ module Chainub
 
     # GET /channels/new
     def new
-      if !user_signed_in?
-        redirect_to channels_path, notice: 'you need to login'
-      end
-
       @channel = Channel.new
     end
 
     # GET /channels/1/edit
     def edit
-      if !user_signed_in?
-        redirect_to channels_path, notice: 'you need to login'
-      end
     end
 
     # POST /channels
     def create
-      if !user_signed_in?
-        redirect_to channels_path, notice: 'you need to login'
-      end
-
       @channel = Channel.new(channel_params)
       @channel.user_id = current_user.id
       if @channel.save
@@ -46,10 +36,6 @@ module Chainub
 
     # PATCH/PUT /channels/1
     def update
-      if !user_signed_in?
-        redirect_to channels_path, notice: 'you need to login'
-      end
-
       if @channel.update(channel_params)
         redirect_to @channel, notice: 'Channel was successfully updated.'
       else
@@ -59,15 +45,17 @@ module Chainub
 
     # DELETE /channels/1
     def destroy
-      if !user_signed_in?
-        redirect_to channels_path, notice: 'you need to login'
-      end
-
       @channel.destroy
       redirect_to channels_url, notice: 'Channel was successfully destroyed.'
     end
 
     private
+      def check_login
+        if !user_signed_in?
+          redirect_to channels_path, notice: 'you need to login'
+        end
+      end
+
       # Use callbacks to share common setup or constraints between actions.
       def set_channel
         @channel = Channel.find(params[:id])
