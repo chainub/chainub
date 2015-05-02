@@ -4,7 +4,8 @@ class CreateChainubChannels < ActiveRecord::Migration
       t.string :api_key
       t.string :api_secret
       t.string :name
-      t.integer :type
+      t.integer :user_id
+      t.integer :channel_type
       t.string :domain
 
       t.timestamps

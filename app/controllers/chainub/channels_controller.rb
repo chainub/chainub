@@ -15,6 +15,10 @@ module Chainub
 
     # GET /channels/new
     def new
+      if !user_signed_in?
+        redirect_to channels_path, notice: 'you need to login'
+      end
+
       @channel = Channel.new
     end
 
@@ -24,8 +28,12 @@ module Chainub
 
     # POST /channels
     def create
-      @channel = Channel.new(channel_params)
+      if !user_signed_in?
+        redirect_to channels_path, notice: 'you need to login'
+      end
 
+      @channel = Channel.new(channel_params)
+      @channel.user_id = current_user.id
       if @channel.save
         redirect_to @channel, notice: 'Channel was successfully created.'
       else
@@ -56,7 +64,7 @@ module Chainub
 
       # Only allow a trusted parameter "white list" through.
       def channel_params
-        params.require(:channel).permit(:api_key, :api_secret, :name, :type, :domain)
+        params.require(:channel).permit(:api_key, :api_secret, :name, :user_id, :channel_type, :domain)
       end
   end
 end
