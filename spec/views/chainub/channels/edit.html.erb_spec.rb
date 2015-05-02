@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe "channels/edit", type: :view do
   before(:each) do
     @channel = assign(:channel, Channel.create!(
-      :secret_key => "MyString",
+      :api_key => "MyString",
+      :api_secret => "MyString",
       :name => "MyString",
-      :channel_type => 1,
+      :type => 1,
       :domain => "MyString"
     ))
   end
@@ -15,11 +16,13 @@ RSpec.describe "channels/edit", type: :view do
 
     assert_select "form[action=?][method=?]", channel_path(@channel), "post" do
 
-      assert_select "input#channel_secret_key[name=?]", "channel[secret_key]"
+      assert_select "input#channel_api_key[name=?]", "channel[api_key]"
+
+      assert_select "input#channel_api_secret[name=?]", "channel[api_secret]"
 
       assert_select "input#channel_name[name=?]", "channel[name]"
 
-      assert_select "input#channel_channel_type[name=?]", "channel[channel_type]"
+      assert_select "input#channel_type[name=?]", "channel[type]"
 
       assert_select "input#channel_domain[name=?]", "channel[domain]"
     end

@@ -4,15 +4,17 @@ RSpec.describe "channels/index", type: :view do
   before(:each) do
     assign(:channels, [
       Channel.create!(
-        :secret_key => "Secret Key",
+        :api_key => "Api Key",
+        :api_secret => "Api Secret",
         :name => "Name",
-        :channel_type => 1,
+        :type => 1,
         :domain => "Domain"
       ),
       Channel.create!(
-        :secret_key => "Secret Key",
+        :api_key => "Api Key",
+        :api_secret => "Api Secret",
         :name => "Name",
-        :channel_type => 1,
+        :type => 1,
         :domain => "Domain"
       )
     ])
@@ -20,7 +22,8 @@ RSpec.describe "channels/index", type: :view do
 
   it "renders a list of channels" do
     render
-    assert_select "tr>td", :text => "Secret Key".to_s, :count => 2
+    assert_select "tr>td", :text => "Api Key".to_s, :count => 2
+    assert_select "tr>td", :text => "Api Secret".to_s, :count => 2
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => 1.to_s, :count => 2
     assert_select "tr>td", :text => "Domain".to_s, :count => 2

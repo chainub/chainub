@@ -12,12 +12,20 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :api_key %><br>
+    <%= f.text_field :api_key %>
+  </div>
+  <div class="field">
+    <%= f.label :api_secret %><br>
+    <%= f.text_field :api_secret %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :channel_type %><br>
-    <%= f.number_field :channel_type %> 0: trigger only, 1: action only 2 trigger and action
+    <%= f.label :type %><br>
+    <%= f.number_field :type %>
   </div>
   <div class="field">
     <%= f.label :domain %><br>
