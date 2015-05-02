@@ -24,6 +24,9 @@ module Chainub
 
     # GET /channels/1/edit
     def edit
+      if !user_signed_in?
+        redirect_to channels_path, notice: 'you need to login'
+      end
     end
 
     # POST /channels
@@ -43,6 +46,10 @@ module Chainub
 
     # PATCH/PUT /channels/1
     def update
+      if !user_signed_in?
+        redirect_to channels_path, notice: 'you need to login'
+      end
+
       if @channel.update(channel_params)
         redirect_to @channel, notice: 'Channel was successfully updated.'
       else
@@ -52,6 +59,10 @@ module Chainub
 
     # DELETE /channels/1
     def destroy
+      if !user_signed_in?
+        redirect_to channels_path, notice: 'you need to login'
+      end
+
       @channel.destroy
       redirect_to channels_url, notice: 'Channel was successfully destroyed.'
     end
