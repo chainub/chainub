@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150502071419) do
     t.string   "name"
     t.integer  "user_id"
     t.integer  "channel_type"
-    t.string   "domain"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

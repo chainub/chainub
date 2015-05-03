@@ -6,7 +6,7 @@ class CreateChainubChannels < ActiveRecord::Migration
       t.string :name
       t.integer :user_id
       t.integer :channel_type
-      t.string :domain
+      t.string :url
 
       t.timestamps
     end
