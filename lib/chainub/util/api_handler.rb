@@ -21,7 +21,7 @@ module Util
           http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
         request = Net::HTTP::Post.new(api_url)
-	request.set_content_type("multipart/form-data")
+        request.set_content_type("multipart/form-data")
         request.set_form_data(params)
         ret = http.request(request)
         # http レスポンスそのまま返すのではなく、なんらか抽象化した方がよいかも
