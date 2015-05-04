@@ -10,5 +10,7 @@ class CreateChainubChannels < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :chainub_channels, :api_key,     unique: true
+    add_index :chainub_channels, :name
   end
 end
