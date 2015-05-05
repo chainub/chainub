@@ -1,4 +1,4 @@
-module Channel
+module LibChannel
   class ChannelAction
     def chainub_action(params)
       begin
