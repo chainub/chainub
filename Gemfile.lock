@@ -135,6 +135,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   chainub!
+  devise
   factory_girl_rails
   jquery-rails
   rspec
