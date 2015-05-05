@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     chainub (0.0.1)
+      devise
       jquery-rails
       rails (~> 4.1.4)
 
@@ -112,7 +113,7 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
-    sprockets (3.0.2)
+    sprockets (3.0.3)
       rack (~> 1.0)
     sprockets-rails (2.2.4)
       actionpack (>= 3.0)
@@ -134,7 +135,6 @@ PLATFORMS
 DEPENDENCIES
   capybara
   chainub!
-  devise
   factory_girl_rails
   jquery-rails
   rspec
