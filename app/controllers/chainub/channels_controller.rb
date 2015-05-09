@@ -63,7 +63,7 @@ module Chainub
 
       # Only allow a trusted parameter "white list" through.
       def channel_params
-        params.require(:channel).permit(:api_key, :api_secret, :name, :user_id, :channel_type, :url)
+        params.require(:channel).permit(:api_key, :api_secret, :name, :internal_class_name, :user_id, :channel_type, :url)
       end
   end
 end

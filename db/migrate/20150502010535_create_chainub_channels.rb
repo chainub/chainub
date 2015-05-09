@@ -4,6 +4,7 @@ class CreateChainubChannels < ActiveRecord::Migration
       t.string :api_key
       t.string :api_secret
       t.string :name
+      t.string :internal_class_name
       t.integer :user_id
       t.integer :channel_type
       t.string :url
@@ -11,6 +12,7 @@ class CreateChainubChannels < ActiveRecord::Migration
       t.timestamps
     end
     add_index :chainub_channels, :api_key,     unique: true
+    add_index :chainub_channels, :internal_class_name, unique: true
     add_index :chainub_channels, :name
   end
 end
