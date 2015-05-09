@@ -1,5 +1,5 @@
 module Chainub
-  class Channel < ActiveRecord::Base
+  class ActionChannel < ActiveRecord::Base
     before_create :set_api_key_secreet
 
     def set_api_key_secreet

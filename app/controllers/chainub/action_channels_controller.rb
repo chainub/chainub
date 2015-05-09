@@ -1,13 +1,13 @@
 require_dependency "chainub/application_controller"
 
 module Chainub
-  class ChannelsController < ApplicationController
+  class ActionChannelsController < ApplicationController
     before_action :set_channel, only: [:show, :edit, :update, :destroy]
     before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
 
     # GET /channels
     def index
-      @channels = Channel.all
+      @channels = ActionChannel.all
     end
 
     # GET /channels/1
@@ -16,7 +16,7 @@ module Chainub
 
     # GET /channels/new
     def new
-      @channel = Channel.new
+      @channel = ActionChannel.new
     end
 
     # GET /channels/1/edit
@@ -25,7 +25,7 @@ module Chainub
 
     # POST /channels
     def create
-      @channel = Channel.new(channel_params)
+      @channel = ActionChannel.new(channel_params)
       @channel.user_id = current_user.id
       if @channel.save
         redirect_to @channel, notice: 'Channel was successfully created.'
@@ -58,12 +58,12 @@ module Chainub
 
       # Use callbacks to share common setup or constraints between actions.
       def set_channel
-        @channel = Channel.find(params[:id])
+        @channel = ActionChannel.find(params[:id])
       end
 
       # Only allow a trusted parameter "white list" through.
       def channel_params
-        params.require(:channel).permit(:api_key, :api_secret, :name, :user_id, :channel_type, :url)
+        params.require(:action_channel).permit(:api_key, :api_secret, :name, :description, :user_id, :url)
       end
   end
 end
