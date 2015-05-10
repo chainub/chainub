@@ -1,4 +1,5 @@
 Chainub::Engine.routes.draw do
+  resources :recipes
   devise_for :users, class_name: "Chainub::User", module: :devise
   resources :trigger_channels
   resources :action_channels
