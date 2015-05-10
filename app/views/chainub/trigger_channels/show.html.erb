@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Api key:</strong>
+  <%= @channel.api_key %>
+</p>
+
+<p>
+  <strong>Api secret:</strong>
+  <%= @channel.api_secret %>
+</p>
+
+<p>
+  <strong>User Id:</strong>
+  <%= @channel.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @channel.name %>
+</p>
+
+<p>
+  <strong>Channel Type:</strong>
+  <%= @channel.channel_type %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @channel.url %>
+</p>
+
+<%= link_to 'Edit', edit_channel_path(@channel) %> |
+<%= link_to 'Back', channels_path %>

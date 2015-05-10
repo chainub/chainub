@@ -1,7 +1,7 @@
 describe "chainub_trigger" do
-  let(:channel_params) {{ user_id: 1, channel_type: 1, url: 'http://yahoo.co.jp' }}
+  let(:channel_params) {{ user_id: 1, url: 'http://yahoo.co.jp' }}
   it "channel does exist" do
-    channel = Chainub::Channel.create(channel_params)
+    channel = Chainub::TriggerChannel.create(channel_params)
     LibChannel::ChannelTrigger.new.chainub_trigger({api_key: channel.api_key, body: "testbody", data: nil})
   end
 

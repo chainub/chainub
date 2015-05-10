@@ -10,7 +10,7 @@ class CreateChainubActionChannels < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :chainub_channels, :api_key,     unique: true
-    add_index :chainub_channels, :name
+    add_index :chainub_action_channels, :api_key,     unique: true
+    add_index :chainub_action_channels, :name
   end
 end
