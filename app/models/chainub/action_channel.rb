@@ -1,5 +1,7 @@
 module Chainub
   class ActionChannel < ActiveRecord::Base
+    belongs_to :user
+    belongs_to :recipe
     before_create :set_api_key_secreet
 
     def set_api_key_secreet
