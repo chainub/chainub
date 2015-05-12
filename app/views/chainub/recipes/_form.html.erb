@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :trigger_channel_id %><br>
-    <%= f.number_field :trigger_channel_id %>
+    <%= f.collection_select(:trigger_channel_id, Chainub::TriggerChannel.all, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :action_channel_id %><br>
-    <%= f.number_field :action_channel_id %>
+    <%= f.collection_select(:action_channel_id, Chainub::ActionChannel.all, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>
