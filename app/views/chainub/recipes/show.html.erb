@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Trigger channel:</strong>
+  <%= @recipe.trigger_channel_id %>
+</p>
+
+<p>
+  <strong>Action channel:</strong>
+  <%= @recipe.action_channel_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @recipe.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>

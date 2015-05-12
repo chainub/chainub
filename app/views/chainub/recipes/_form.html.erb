@@ -1,0 +1,25 @@
+<%= form_for(@recipe) do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :trigger_channel_id %><br>
+    <%= f.collection_select(:trigger_channel_id, Chainub::TriggerChannel.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :action_channel_id %><br>
+    <%= f.collection_select(:action_channel_id, Chainub::ActionChannel.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

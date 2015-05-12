@@ -1,13 +1,13 @@
 require_dependency "chainub/application_controller"
 
 module Chainub
-  class ChannelsController < ApplicationController
+  class TriggerChannelsController < ApplicationController
     before_action :set_channel, only: [:show, :edit, :update, :destroy]
     before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
 
     # GET /channels
     def index
-      @channels = Channel.all
+      @channels = TriggerChannel.all
     end
 
     # GET /channels/1
@@ -16,7 +16,7 @@ module Chainub
 
     # GET /channels/new
     def new
-      @channel = Channel.new
+      @channel = TriggerChannel.new
     end
 
     # GET /channels/1/edit
@@ -25,7 +25,7 @@ module Chainub
 
     # POST /channels
     def create
-      @channel = Channel.new(channel_params)
+      @channel = TriggerChannel.new(channel_params)
       @channel.user_id = current_user.id
       if @channel.save
         redirect_to @channel, notice: 'Channel was successfully created.'
@@ -46,24 +46,24 @@ module Chainub
     # DELETE /channels/1
     def destroy
       @channel.destroy
-      redirect_to channels_url, notice: 'Channel was successfully destroyed.'
+      redirect_to trigger_channels_url, notice: 'Channel was successfully destroyed.'
     end
 
     private
       def check_login
         if !user_signed_in?
-          redirect_to channels_path, notice: 'you need to login'
+          redirect_to new_user_session_path, notice: 'you need to login'
         end
       end
 
       # Use callbacks to share common setup or constraints between actions.
       def set_channel
-        @channel = Channel.find(params[:id])
+        @channel = TriggerChannel.find(params[:id])
       end
 
       # Only allow a trusted parameter "white list" through.
       def channel_params
-        params.require(:channel).permit(:api_key, :api_secret, :name, :user_id, :channel_type, :url)
+        params.require(:trigger_channel).permit(:api_key, :api_secret, :name, :description, :user_id, :url)
       end
   end
 end
