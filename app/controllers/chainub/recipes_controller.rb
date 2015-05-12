@@ -3,6 +3,7 @@ require_dependency "chainub/application_controller"
 module Chainub
   class RecipesController < ApplicationController
     before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+    before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
 
     # GET /recipes
     def index
@@ -25,6 +26,7 @@ module Chainub
     # POST /recipes
     def create
       @recipe = Recipe.new(recipe_params)
+      @recipe.user_id = current_user.id
 
       if @recipe.save
         redirect_to @recipe, notice: 'Recipe was successfully created.'
@@ -49,6 +51,12 @@ module Chainub
     end
 
     private
+      def check_login
+        if !user_signed_in?
+          redirect_to new_user_session_path, notice: 'you need to login'
+        end
+      end
+
       # Use callbacks to share common setup or constraints between actions.
       def set_recipe
         @recipe = Recipe.find(params[:id])

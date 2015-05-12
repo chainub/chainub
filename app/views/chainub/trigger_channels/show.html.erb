@@ -21,8 +21,8 @@
 </p>
 
 <p>
-  <strong>Channel Type:</strong>
-  <%= @channel.channel_type %>
+  <strong>Description:</strong>
+  <%= @channel.description %>
 </p>
 
 <p>
@@ -30,5 +30,5 @@
   <%= @channel.url %>
 </p>
 
-<%= link_to 'Edit', edit_channel_path(@channel) %> |
-<%= link_to 'Back', channels_path %>
+<%= link_to 'Edit', edit_trigger_channel_path(@channel) %> |
+<%= link_to 'Back', trigger_channels_path %>

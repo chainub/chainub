@@ -1,4 +1,5 @@
 describe "chainub_trigger" do
+  include_context :basic_recipe
   let(:channel_params) {{ user_id: 1, url: 'http://yahoo.co.jp' }}
   it "channel does exist" do
     channel = Chainub::TriggerChannel.create(channel_params)

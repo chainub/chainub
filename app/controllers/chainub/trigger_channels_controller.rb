@@ -46,13 +46,13 @@ module Chainub
     # DELETE /channels/1
     def destroy
       @channel.destroy
-      redirect_to channels_url, notice: 'Channel was successfully destroyed.'
+      redirect_to trigger_channels_url, notice: 'Channel was successfully destroyed.'
     end
 
     private
       def check_login
         if !user_signed_in?
-          redirect_to channels_path, notice: 'you need to login'
+          redirect_to new_user_session_path, notice: 'you need to login'
         end
       end
 
